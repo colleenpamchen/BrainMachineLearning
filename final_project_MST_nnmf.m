@@ -1,4 +1,7 @@
 %% NNMF of MNIST dataset approximation of MST neurons 
+% I THINK IM GOING CRAZY! don't start a new project on GitHub, and then 
+% git init the local directory. I did this last time and it was the wrong
+% thing! 
 % setting up MNIST dataset, images, and labels 
 
 images = loadMNISTImages('train-images-idx3-ubyte');
