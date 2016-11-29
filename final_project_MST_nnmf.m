@@ -55,9 +55,31 @@ fclose(fp);
 % end
 disp(labels(idx))
 
+% NNMF with k=64 basis vectors: 
+k=64; 
+[W, H, D] = nnmf(images,k);
+
+idxx=[1:10:64];
+recon = W(:,:)*H(:,1);
+for idxx=1:length(idxx)
+subplot(8,1,idxx); 
+imshow(reshape(W(:,idxx),28,28));
+end
+% [ ] increase the number of features, learn over 1000 images. 
+% 
+%
+%
+% 
 
 
 
+
+
+
+
+
+
+%%
 % notes below here: 
 images = loadMNISTImages('train-images-idx3-ubyte');
 labels = loadMNISTLabels('train-labels-idx1-ubyte');
