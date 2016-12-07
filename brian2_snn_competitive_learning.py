@@ -35,7 +35,8 @@ taupre = 50*ms;
 taupost = 50*ms;
 apre = 1.0e-14; 
 apost = -apre * taupre / taupost * 1.05 ;
-
+pwd
+pwd
 tauca= .1 * second; 
 
 eqs = '''
@@ -77,7 +78,7 @@ Sff = Synapses(Pin, P, '''dw/dt = a* w * (1-(ca/Rtarget) ) : 1
                         w = clip(w+x,0,1) ''')         
 
 Sff.connect() #connect all to all
-Sff.w = '( rand() )*2e-12 ' # has to do with the feedforward synapse. change this to be higher. 
+Sff.w = '( rand() )* 0.00001 ' # has to do with the feedforward synapse. change this to be higher. 
 
 # recurrent 
 # wreci = -5 * nA   ## VARIABLE OF IMPORTANCE. we want this to be high -7 
@@ -130,15 +131,30 @@ stim_show(W-.5) #-.5 due to a plotting issue
 figure(figsize=(6,4))
 plot(v_mon.t/ms, v_mon.ca.T,'.r')
 xlabel('Time (ms)')
+ylabel('Calcium (approx. firing rate)')
 
 # Plot weights: 
 figure(figsize=(6,4))
 plot(v_mon.t/ms, w_mon.w.T,'.r')
 xlabel('Time (ms)')
+ylabel('weights')
+
+
+
+figure(figsize=(6,4))
+plot(Pin, w_mon.w.T,'.r')
+xlabel('SynapseID')
+ylabel('weights')
+
+
+
 
 show()
 
 
+# [ ] Plot weight/synapses v  neuron ID
+# [ ] Plot avg. firing rate 
+# [ ] sci-kit-learn 
 
 
 
